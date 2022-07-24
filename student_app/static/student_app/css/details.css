@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.table table{
+    margin: 8% auto; 
+}
+
+.table table,tr,th,td {
+    border: 1px solid black;
+    padding: 10px;
+    border-collapse: collapse;
+}
+
+.table .action .edit {
+    color: #fff;
+    background: blue;
+    padding: 6px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+
+.table .action .delete {
+    color: #fff;
+    background: red;
+    padding: 6px;
+    text-decoration: none;
+    border-radius: 4px;
+}

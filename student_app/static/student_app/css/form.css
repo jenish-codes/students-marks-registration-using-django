@@ -1,0 +1,32 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+form {
+    padding: 30px;
+    background: linear-gradient(
+        to right,
+        blue 0%,
+        blue 50%,
+        red 50%,
+        red 100%
+    );
+    width: 600px;
+}
+
+.form .header {
+    text-align: center;
+    color: #fff;
+}
+
+.form label {
+    color: #fff;
+}
+
+.button {
+    text-align: center;
+}
