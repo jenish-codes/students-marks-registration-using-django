@@ -9,5 +9,6 @@ class StudentDetails(models.Model):
     science = models.IntegerField(default=0)
     social = models.IntegerField(default=0)
     total = models.IntegerField(default=0)
+    average = models.CharField(max_length=100)
     pass_fail = models.CharField(max_length=100)
     grade = models.CharField(max_length=100)
