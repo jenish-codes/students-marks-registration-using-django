@@ -6,63 +6,63 @@
 <div class="container">
     <div class="form">
         <div class="header">
-            <h2>Student Details Form</h2>
+            <h2>Update Details</h2>
         </div>
-        <form action="{% url 'add' %}" method="post">
+        <form action="{% url 'update' data.id %}" method="post">
             {% csrf_token %}
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="name" required>
+                    <input type="text" class="form-control" name="name" value="{{ data.name }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Email</label>
                 <div class="col-sm-8">
-                    <input type="email" class="form-control" name="email" required>
+                    <input type="email" class="form-control" name="email" value="{{ data.email }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Tamil Mark</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="tamil" required>
+                    <input type="text" class="form-control" name="tamil" value="{{ data.tamil }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">English Mark</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="english" required>
+                    <input type="text" class="form-control" name="english" value="{{ data.english }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Maths Mark</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="maths" required>
+                    <input type="text" class="form-control" name="maths" value="{{ data.maths }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Science Mark</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="science" required>
+                    <input type="text" class="form-control" name="science" value="{{ data.science }}" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Social Mark</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="social" required>
+                    <input type="text" class="form-control" name="social" value="{{ data.social }}" required>
                 </div>
             </div>
             
 
            <div class="button">
-               <input type="submit" class="btn btn-danger" value="Add">
+               <input type="submit" class="btn btn-danger" value="Update">
                <a href="{% url 'details' %}" class="btn btn-primary" >View</a>
            </div>
             

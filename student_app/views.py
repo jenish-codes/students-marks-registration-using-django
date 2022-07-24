@@ -10,20 +10,28 @@ class AddDetails(View):
     def post(self, request):
         name = request.POST['name']
         email = request.POST['email']
-        tamil = request.POST['tamil']
-        english = request.POST['english']
-        maths = request.POST['maths']
-        science = request.POST['science']
-        social = request.POST['social']
+        tamil = int(request.POST['tamil'])
+        english = int(request.POST['english'])
+        maths = int(request.POST['maths'])
+        science = int(request.POST['science'])
+        social = int(request.POST['social'])
 
         # total and avg calculation
-        total = int(tamil)+int(english)+int(maths)+int(science)+int(social)
+        total = tamil + english + maths + science + social
         average = total/5
     
         #pass or fail
         pass_fail = None
 
-        if int(tamil) < 35 or int(english) < 35 or int(maths) < 35 or int(science) < 35 or int(social):
+        if tamil < 35:
+            pass_fail = "F"
+        elif english < 35:
+            pass_fail = "F"
+        elif maths < 35:
+            pass_fail = "F"
+        elif science < 35:
+            pass_fail = "F"
+        elif social <35:
             pass_fail = "F"
         else:
             pass_fail = "P"
@@ -74,8 +82,75 @@ class Details(View):
 
 class Update(View):
     def get(self, request, id):
-        return render(request, "student_app/update.html")
+        data = StudentDetails.objects.get(id=id)
+        return render(request, "student_app/update.html", {'data':data})
+    def post(self, request, id):
+        name = request.POST['name']
+        email = request.POST['email']
+        tamil = int(request.POST['tamil'])
+        english = int(request.POST['english'])
+        maths = int(request.POST['maths'])
+        science = int(request.POST['science'])
+        social = int(request.POST['social'])
+
+        
+         # total and avg calculation
+        total = tamil + english + maths + science + social
+        average = total/5
     
+        #pass or fail
+        pass_fail = None
+
+        if tamil < 35:
+            pass_fail = "F"
+        elif english < 35:
+            pass_fail = "F"
+        elif maths < 35:
+            pass_fail = "F"
+        elif science < 35:
+            pass_fail = "F"
+        elif social <35:
+            pass_fail = "F"
+        else:
+            pass_fail = "P"
+
+
+        # grade
+        grade = None
+        if pass_fail == "P":
+            if average >= 95:
+                grade = "O+"
+            elif average >= 90:
+                grade = "O"
+            elif average >= 80:
+                grade = "A+"
+            elif average >= 70:
+                grade = "A"
+            elif average >= 60:
+                grade = "B+"
+            elif average >= 50:
+                grade = "B"
+            elif average >= 35:
+                grade = "c"
+        else:
+            grade = "RA"
+
+        data = StudentDetails.objects.get(id=id)
+        data.name = name
+        data.email = email
+        data.tamil = tamil
+        data.english = english
+        data.maths = maths
+        data.science = science
+        data.social = social
+        data.total = total
+        data.average = average
+        data.pass_fail = pass_fail
+        data.grade = grade
+
+        data.save()
+
+        return redirect("details")
 
 
 def delete(request, id):
